@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Weather App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="static/css/main.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var url = "http://api.openweathermap.org/data/2.5/forecast?q=Washington";
+            var apiKey = "&APPID=3aca0b91e03a4383af46f58f751de0de";
+            $.get(url + apiKey, function (data) {
+                console.log(data);
+            })
+
+            var location = $('#location1').val();
+            var newUrl = url + location + apiKey;
+            console.log(newUrl);
+            $.get(newUrl, function (data) {
+                console.log(data);
+                var kelvin = data.list[0].main.temp;
+                //console.log(kelvin);
+                var temp = Math.floor(9 / 5 * (kelvin - 273) + 32);
+                //console.log(temp);
+                console.log(data.city.name);
+
+                $("#weather_location1").append("<h1>" + location + " " + data.city.country + "</h1>" + "<h2>" + temp + " Degrees " + " " + data.list[0].weather[0].description + "</h2>");
+            }, "json");
+
+            var location = $('#location2').val();
+            var newUrl = url + location + apiKey;
+            console.log(newUrl);
+            $.get(newUrl, function (data) {
+                console.log(data);
+                var kelvin = data.list[0].main.temp;
+                //console.log(kelvin);
+                var temp = Math.floor(9 / 5 * (kelvin - 273) + 32);
+                //console.log(temp);
+                console.log(data.city.name);
+
+                $("#weather_location2").append("<h1>" + location + " " + data.city.country + "</h1>" + "<h2>" + temp + " Degrees " + " " + data.list[0].weather[0].description + "</h2>");
+            }, "json");
+
+            var location = $('#location3').val();
+            var newUrl = url + location + apiKey;
+            console.log(newUrl);
+            $.get(newUrl, function (data) {
+                console.log(data);
+                var kelvin = data.list[0].main.temp;
+                //console.log(kelvin);
+                var temp = Math.floor(9 / 5 * (kelvin - 273) + 32);
+                //console.log(temp);
+                console.log(data.city.name);
+
+                $("#weather_location3").append("<h1>" + location + " " + data.city.country + "</h1>" + "<h2>" + temp + " Degrees " + " " + data.list[0].weather[0].description + "</h2>");
+            }, "json");
+
+            var location = $('#location2').val();
+            var newUrl = url + location + apiKey;
+            console.log(newUrl);
+            $.get(newUrl, function (data) {
+                console.log(data);
+                var kelvin = data.list[0].main.temp;
+                //console.log(kelvin);
+                var temp = Math.floor(9 / 5 * (kelvin - 273) + 32);
+                //console.log(temp);
+                console.log(data.city.name);
+
+                $("#weather_location4").append("<h1>" + location + " " + data.city.country + "</h1>" + "<h2>" + temp + " Degrees " + " " + data.list[0].weather[0].description + "</h2>");
+            }, "json");
+
+            $(document).on("click", "button", function () {
+                console.log("hello")
+                console.log(this);
+                var location = $('#location1').val();
+                var newUrl = url + location + apiKey;
+                console.log(newUrl);
+                $.get(newUrl, function (data) {
+                    console.log(data);
+                    var kelvin = data.list[0].main.temp;
+                    //console.log(kelvin);
+                    var temp = Math.floor(9 / 5 * (kelvin - 273) + 32);
+                    //console.log(temp);
+                    console.log(data.city.name);
+
+                    $("#weather-box").append("<h1>" + location + " " + data.city.country + "</h1>" + "<h2>" + temp + " Degrees " + " " + data.list[0].weather[0].description + "</h2>");
+                }, "json");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h1 class="navbar-brand">Weather</h1>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <div id="container">
+                        <h1>Search for Weather</h1>
+                        <input id="location" type="text" name="location" value="location">
+                        <button>Search Weather</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- <div id="container">
+        <h1>Search for Weather</h1>
+        <input id="location" type="text" name="location" value="location">
+        <button>Search Weather</button>
+        <div id="weather-box"></div>s
+    </div> -->
+    <div class="container container-fluid" style="height: 300px;">
+        <h1>Current Location</h1>
+        <div class="row">
+
+            <div class="col-sm-3 box4">Weather1
+                <div id="weather-box"></div>
+                <div id="weather-location1"></div>
+                <div class="dropdown">
+                    <button class="dropbtn">Change location</button>
+                    <div class="dropdown-content">
+                        <form class="form-inline display-search" action='/process1' method='post'>
+                            {% csrf_token %}
+                            <input id="location1" type="text" name="location1" value="{{request.session.location1}}">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Location</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 box4">Weather2
+                <div id="weather-location2"></div>
+                <div class="dropdown">
+                    <button class="dropbtn">Change location</button>
+                    <div class="dropdown-content">
+                        <form class="form-inline display-search" action='/process2' method='post'>
+                             {% csrf_token %}
+                            <input id="location2" type="text" name="location2" value="{{request.session.location2}}">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Location</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 box4">Weather3
+                <div id="weather-location3"></div>
+                <div class="dropdown">
+                    <button class="dropbtn">Change location</button>
+                    <div class="dropdown-content">
+                        <form class="form-inline display-search" action='/process3' method='post'>
+                            {% csrf_token %}
+                            <input id="location3" type="text" name="location3" value="{{request.session.location3}}">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Location</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 box4">Weather4
+                <div id="weather-location4"></div>
+                <div class="dropdown">
+                    <button class="dropbtn">Change location</button>
+                    <div class="dropdown-content">
+                        <form class="form-inline display-search" action='/process4' method='post'>
+                            {% csrf_token %}
+                            <input id="location4" type="text" name="location4" value="{{request.session.location4}}">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Location</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div id="foot_container container-fluid" sylte="position: absolute; bottom: 0px;">
+            <div id="triangle-bottomright"></div>
+            <div id="triangle-bottomleft"></div>
+        </div>
+    </footer>
+</body>
+
+</html>

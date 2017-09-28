@@ -18,10 +18,9 @@
                 console.log(data);
             })
 
-            var location = $('#location1').val();
-            var newUrl = url + location + apiKey;
-            console.log(newUrl);
-            $.get(newUrl, function (data) {
+            var location1 = $('#location1').val();
+            var newUrl1 = url + location1 + apiKey;
+            $.get(newUrl1, function (data) {
                 console.log(data);
                 var kelvin = data.list[0].main.temp;
                 //console.log(kelvin);
@@ -29,55 +28,44 @@
                 //console.log(temp);
                 console.log(data.city.name);
 
-                $("#weather_location1").append("<h1>" + location + " " + data.city.country + "</h1>" + "<h2>" + temp + " Degrees " + " " + data.list[0].weather[0].description + "</h2>");
+                $("#weather_location1").append("<h1>" + location1 + " " + data.city.country + "</h1>" + "<br>" + "<h2>" + temp + " Degrees " + " " + data.list[0].weather[0].description + "</h2>");
             }, "json");
 
-            var location = $('#location2').val();
-            var newUrl = url + location + apiKey;
-            console.log(newUrl);
-            $.get(newUrl, function (data) {
+            var location2 = $('#location2').val();
+            var newUrl2 = url + location2 + apiKey;
+            $.get(newUrl2, function (data) {
                 console.log(data);
                 var kelvin = data.list[0].main.temp;
-                //console.log(kelvin);
                 var temp = Math.floor(9 / 5 * (kelvin - 273) + 32);
-                //console.log(temp);
                 console.log(data.city.name);
 
-                $("#weather_location2").append("<h1>" + location + " " + data.city.country + "</h1>" + "<h2>" + temp + " Degrees " + " " + data.list[0].weather[0].description + "</h2>");
+                $("#weather_location2").append("<h1>" + location2 + " " + data.city.country + "</h1>" + "<h2>" + temp + " Degrees " + " " + data.list[0].weather[0].description + "</h2>");
             }, "json");
 
-            var location = $('#location3').val();
-            var newUrl = url + location + apiKey;
-            console.log(newUrl);
-            $.get(newUrl, function (data) {
+            var location3 = $('#location3').val();
+            var newUrl3 = url + location3 + apiKey;
+            $.get(newUrl3, function (data) {
                 console.log(data);
                 var kelvin = data.list[0].main.temp;
-                //console.log(kelvin);
                 var temp = Math.floor(9 / 5 * (kelvin - 273) + 32);
-                //console.log(temp);
                 console.log(data.city.name);
-
-                $("#weather_location3").append("<h1>" + location + " " + data.city.country + "</h1>" + "<h2>" + temp + " Degrees " + " " + data.list[0].weather[0].description + "</h2>");
+                $("#weather_location3").append("<h1>" + location3 + " " + data.city.country + "</h1>" + "<h2>" + temp + " Degrees " + " " + data.list[0].weather[0].description + "</h2>");
             }, "json");
 
-            var location = $('#location2').val();
-            var newUrl = url + location + apiKey;
-            console.log(newUrl);
-            $.get(newUrl, function (data) {
+            var location4 = $('#location4').val();
+            var newUrl4 = url + location4 + apiKey;
+            $.get(newUrl4, function (data) {
                 console.log(data);
                 var kelvin = data.list[0].main.temp;
-                //console.log(kelvin);
                 var temp = Math.floor(9 / 5 * (kelvin - 273) + 32);
-                //console.log(temp);
                 console.log(data.city.name);
-
-                $("#weather_location4").append("<h1>" + location + " " + data.city.country + "</h1>" + "<h2>" + temp + " Degrees " + " " + data.list[0].weather[0].description + "</h2>");
+                $("#weather_location4").append("<h1>" + location4 + " " + data.city.country + "</h1>" + "<h2>" + temp + " Degrees " + " " + data.list[0].weather[0].description + "</h2>");
             }, "json");
 
-            $(document).on("click", "button", function () {
+            $("#search-location").click( function () {
                 console.log("hello")
                 console.log(this);
-                var location = $('#location1').val();
+                var location = $('#location').val();
                 var newUrl = url + location + apiKey;
                 console.log(newUrl);
                 $.get(newUrl, function (data) {
@@ -106,25 +94,19 @@
                     <div id="container">
                         <h1>Search for Weather</h1>
                         <input id="location" type="text" name="location" value="location">
-                        <button>Search Weather</button>
+                        <button id="search-location">Search Weather</button>
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
-    <!-- <div id="container">
-        <h1>Search for Weather</h1>
-        <input id="location" type="text" name="location" value="location">
-        <button>Search Weather</button>
-        <div id="weather-box"></div>s
-    </div> -->
     <div class="container container-fluid" style="height: 300px;">
         <h1>Current Location</h1>
+        <div id="weather-box"></div>
         <div class="row">
-
-            <div class="col-sm-3 box4">Weather1
-                <div id="weather-box"></div>
-                <div id="weather-location1"></div>
+            <div class="col-sm-3 box4">
+                Weather1
+                <div id="weather_location1"></div>
                 <div class="dropdown">
                     <button class="dropbtn">Change location</button>
                     <div class="dropdown-content">
@@ -137,7 +119,7 @@
                 </div>
             </div>
             <div class="col-sm-3 box4">Weather2
-                <div id="weather-location2"></div>
+                <div id="weather_location2"></div>
                 <div class="dropdown">
                     <button class="dropbtn">Change location</button>
                     <div class="dropdown-content">
@@ -150,7 +132,7 @@
                 </div>
             </div>
             <div class="col-sm-3 box4">Weather3
-                <div id="weather-location3"></div>
+                <div id="weather_location3"></div>
                 <div class="dropdown">
                     <button class="dropbtn">Change location</button>
                     <div class="dropdown-content">
@@ -163,7 +145,7 @@
                 </div>
             </div>
             <div class="col-sm-3 box4">Weather4
-                <div id="weather-location4"></div>
+                <div id="weather_location4"></div>
                 <div class="dropdown">
                     <button class="dropbtn">Change location</button>
                     <div class="dropdown-content">

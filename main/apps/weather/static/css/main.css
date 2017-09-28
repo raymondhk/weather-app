@@ -3,9 +3,9 @@
 }
 
 .box4 {
-    border: 1px solid balck;
-    width:30%;
-    height: 50px;
+    border-radius: 1px solid balck;
+    width:100px;
+    height: 100px;
 }
 #foot-contianer {
     
@@ -27,9 +27,10 @@
     border-left: 1000px solid transparent;
 }
 
+
 /* Dropdown Button */
 .dropbtn {
-    background-color: #4CAF50;
+    /* background-color: #4CAF50; */
     color: white;
     padding: 16px;
     font-size: 16px;

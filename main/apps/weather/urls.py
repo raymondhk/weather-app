@@ -3,6 +3,7 @@ from . import views           # This line is new!
 
 urlpatterns = [
     url(r'^$', views.index),
+    url(r'^temp$', views.temp1),
     url(r'^process1$', views.newLocation1),
     url(r'^process2$', views.newLocation2),
     url(r'^process3$', views.newLocation3),

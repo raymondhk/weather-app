@@ -15,6 +15,9 @@ def index(request):
         request.session['location4'] = 'Washington D.C'
     return render(request, "html/index.html")
 
+def temp1(request):
+    return render(request, "html/temp1.html")
+
 
 def newLocation1(request):
     request.session['location1'] = request.POST["location1"]
